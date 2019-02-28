@@ -21,6 +21,9 @@ const ITEMS_3: &[usize] = &[
 ];
 const RESULT_3: usize = 40984;
 
+const ITEMS_4: &[usize] = &[1024, 1024, 1024, 1023, 1, 1024, 1024, 1024, 1023, 1, 1];
+const RESULT_4: usize = 8648;
+
 const ITEMS_6: &[usize] = &[183+184-18];
 const RESULT_6: usize = 376;
 
@@ -66,6 +69,9 @@ fn calc(items: &[usize]) -> usize {
     if this_ts > 0{
         out_summ += 1;
     }
+    if this_eit + this_ts > USEFULL_EIT{
+        out_summ += 1;
+    }
     return out_summ*TS_PACKET_SIZE;
 }
 
@@ -73,6 +79,7 @@ fn main() {
     assert_eq!(calc(ITEMS_1), RESULT_1);
     assert_eq!(calc(ITEMS_2), RESULT_2);
     assert_eq!(calc(ITEMS_3), RESULT_3);
+    assert_eq!(calc(ITEMS_4), RESULT_4);
     assert_eq!(calc(ITEMS_6), RESULT_6);
     assert_eq!(calc(ITEMS_7), RESULT_7);
     println!("Ok");
